@@ -60,21 +60,22 @@ public class App
     public static void newGame() {
         System.out.println("Deseja jogar novamente? (y/n)");
         Scanner scanner = new Scanner(System.in);
-        String leitura = "";
+        char leitura = 'a';
         boolean errou = false;
 
-        for (; leitura != "n" || leitura != "y" ;) {
+        for (; leitura != 'n' && leitura != 'y' ;) {
             if (errou) {
                 System.out.print("Essa opção e invalida! Tente novamente, (y/n):");
             }
-            leitura = scanner.next();
+            leitura = scanner.nextLine().charAt(0);
+            errou = true;
         }
+        
+        if (leitura == 'y') 
+            thisGame();
+        else
+            System.out.println("Obrigado por jogar!");
 
         scanner.close();
-        
-        if (leitura == "y") 
-            newGame();
-        else
-            System.out.print("Obrigado por jogar!");
     }
 }
